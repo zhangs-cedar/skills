@@ -27,4 +27,5 @@
 
 **学习优化** - 根据错误记录识别薄弱点，针对性强化，建立错误-知识点映射
 
-## 此文件AI不要修改，所有东西应该在 .ai-errors-log.md 中记录
+## Skills
+本项目在 skills/ 目录下提供多种 Skills。当用户请求涉及文档处理、设计、测试等任务时，参考 SKILLS_MANIFEST.md 选择对应 skill，并读取其 SKILL.md 执行。
