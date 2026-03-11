@@ -23,21 +23,11 @@
 ## 创建新 Skill
 
 新建 skill 时指定路径到本仓库即可统一管理：
-
 - **目标路径**：`D:\SMore_gitlab\skills\skills\<skill-name>/`
 - **示例**：创建 `code-review` 则放到 `skills/skills/code-review/`
 - 创建完成后，在 `SKILLS_MANIFEST.md` 中补充该 skill 的说明
-
 在本仓库内操作时，`.cursorrules` 已约定默认创建路径，可直接说「创建一个 xxx 技能」即可。
 
-## 技能清单
-
-详见 [SKILLS_MANIFEST.md](./SKILLS_MANIFEST.md)，包括：
-
-- **文档类**：docx、xlsx、pptx、pdf
-- **设计与创意**：frontend-design、canvas-design、theme-factory 等
-- **开发与测试**：mcp-builder、webapp-testing、claude-api
-- **协作与流程**：internal-comms、doc-coauthoring、skill-creator
 
 ## 项目结构
 
