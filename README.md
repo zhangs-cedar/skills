@@ -2,47 +2,65 @@
 
 > 基于 Anthropic Skills 规范，用于 Cursor/Claude 的个人技能库，可在所有项目中复用。
 
-## 仓库路径
 
-`D:\SMore_gitlab\skills\`
+## 在项目中使用
 
-## 快速开始
+### 子模块（推荐）
 
-### 在项目 .cursorrules 中引用
+以 Git 子模块引入，每个项目显式声明依赖，随项目版本管理，适合协作。
 
-可在各项目的 `.cursorrules` 中添加：
+**在需要 skills 的项目根目录执行：**
 
-```markdown
-## 共享 Skills
-技能仓库：`D:\SMore_gitlab\skills\`
-- 技能目录：`D:\SMore_gitlab\skills\skills\`
-- 技能清单：`D:\SMore_gitlab\skills\SKILLS_MANIFEST.md`
-任务涉及文档/设计/测试时，按 SKILLS_MANIFEST 选择对应 skill 并读取其 SKILL.md 执行。
+```bash
+git submodule add <本仓库URL> .cursor/skills
 ```
 
-## 创建新 Skill
+示例（替换为实际 GitLab 地址）：
 
-新建 skill 时指定路径到本仓库即可统一管理：
-- **目标路径**：`D:\SMore_gitlab\skills\skills\<skill-name>/`
-- **示例**：创建 `code-review` 则放到 `skills/skills/code-review/`
-- 创建完成后，在 `SKILLS_MANIFEST.md` 中补充该 skill 的说明
-在本仓库内操作时，`.cursorrules` 已约定默认创建路径，可直接说「创建一个 xxx 技能」即可。
+```bash
+git submodule add https://gitlab.com/xxx/skills.git .cursor/skills
+```
+
+**克隆含子模块的项目后需初始化：**
+
+```bash
+git clone <项目URL>
+cd <项目目录>
+git submodule update --init --recursive
+```
+
+**更新 skills 到最新：**
+
+```bash
+cd .cursor/skills && git pull origin main
+```
+
+**目录结构：**
+
+```
+your-project/
+  .cursor/
+    skills/           # 子模块，指向本仓库
+      docx/
+      canvas-design/
+      ...
+```
+
 
 
 ## 项目结构
 
 ```
 skills/
-├── skills/            # 所有 skill 模块（符号链接的目标）
-│   ├── docx/
-│   ├── pdf/
-│   └── ...
-├── template/          # 新 skill 模板
-├── SKILLS_MANIFEST.md # 技能清单与使用说明
-├── .cursorrules       # 本仓库规则（含默认创建路径）
-└── .ai-errors-log.md  # AI 错误模式记录
+├── docx/              # skill 模块（含 SKILL.md）
+├── pdf/
+├── canvas-design/
+├── ...
+├── template/           # 新 skill 模板
+├── SKILLS_MANIFEST.md  # 技能清单与使用说明
+├── .cursorrules        # 本仓库规则（含默认创建路径）
+├── link-global-skills.ps1  # 全局符号链接脚本（方式三）
+└── README.md
 ```
-
----
 
 **Skill 基本结构**：每个 skill 为一个文件夹，含 `SKILL.md`（YAML frontmatter + Markdown 指令）。必填字段：`name`、`description`。可使用 `template/` 作为新 skill 的起点。
