@@ -25,3 +25,6 @@
 
 ## Skills
 本项目在 skills/ 目录下提供多种 Skills。当用户请求涉及文档处理、设计、测试等任务时，参考 SKILLS_MANIFEST.md 选择对应 skill，并读取其 SKILL.md 执行。
+
+## 创建新 Skill
+当在本项目中创建新 skill 时，路径统一使用：`skills/skills/<skill-name>/`。创建完成后在 SKILLS_MANIFEST.md 中补充说明。
